@@ -2,8 +2,8 @@ name: Run wxvl every 4 hours
 
 on:
   schedule:
-    - cron: '0 */4 * * *'  # 每4小时执行一次
-  workflow_dispatch:       # 允许手动触发
+    - cron: '0 */4 * * *'
+  workflow_dispatch:
 
 jobs:
   run-wxvl:
@@ -21,11 +21,11 @@ jobs:
       - name: Install dependencies
         run: |
           python -m pip install --upgrade pip
-          pip install -r requirements.txt
+          pip install -r wxvl/requirements.txt
 
       - name: Run main.py
         run: |
-          python main.py
+          python wxvl/main.py
 
       - name: Commit changes if any
         run: |
